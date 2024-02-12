@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Will You Be My Valentine?</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  #container {
+    text-align: center;
+  }
+  #question {
+    margin-bottom: 20px;
+  }
+  button {
+    font-size: 24px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  #yes {
+    background-color: #4CAF50;
+    color: white;
+    transition: transform 0.5s, font-size 0.5s;
+  }
+  #no {
+    background-color: #f44336;
+    color: white;
+  }
+  #message {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+<div id="container">
+  <iframe src="https://giphy.com/embed/vDhDcIEmShbUI" width="480" height="480" frameborder="0" class="giphy-embed" allowfullscreen></iframe>
+  <h1 id="question">Will You Be My Valentine?</h1>
+  <button id="yes" onclick="expandYes()">Yes</button>
+  <button id="no" onclick="increaseNo()">No</button>
+  <div id="message"></div>
+</div>
+
+<script>
+  var noClicks = 0;
+  var noMessages = generateNoMessages();
+
+  function expandYes() {
+    document.getElementById("yes").style.width = "200px";
+    document.getElementById("yes").style.height = "200px";
+    document.getElementById("yes").style.fontSize = "36px";
+    document.getElementById("yes").style.zIndex = "999";
+    document.getElementById("no").style.display = "none";
+    document.getElementById("message").innerText = "Congratulations! You made the right choice!";
+  }
+
+  function increaseNo() {
+    noClicks++;
+    var newSize = 24 + noClicks * 2;
+    document.getElementById("yes").style.fontSize = newSize + "px";
+    var messageIndex = Math.floor(Math.random() * noMessages.length);
+    document.getElementById("message").innerText = noMessages[messageIndex];
+  }
+
+  function generateNoMessages() {
+    var messages = [
+      "Maybe reconsider?",
+      "Why not say 'Yes' this time?",
+      "Give 'Yes' a chance!",
+      "Don't you want to make me happy?",
+      "Think about the wonderful times we could have!",
+      "Click 'Yes' and let's make some memories!",
+      "I promise you won't regret clicking 'Yes'!",
+      "Just one click away from making my day!",
+      "Think about the smiles 'Yes' could bring!",
+      "Why say 'No' when 'Yes' is right there?",
+      "Just a little click and we'll be celebrating!",
+      "Come on, give 'Yes' a chance!",
+      "Click 'Yes' and let's paint the town red!",
+      "Saying 'Yes' is the best decision!",
+      "You won't believe the surprises 'Yes' has in store!",
+      "Click 'Yes' and let's make magic happen!",
+      "You're amazing! Say 'Yes'!",
+      "Choose 'Yes' and let's start an adventure!",
+      "Make my heart skip a beat with 'Yes'!",
+      "Why hesitate? Click 'Yes'!",
+      "I have a feeling 'Yes' will make you smile!",
+      "Say 'Yes' and let's make dreams come true!",
+      // Add more unique messages here...
+    ];
+    
+    // Duplicate messages to reach 1000
+    while (messages.length < 1000) {
+      messages = messages.concat(messages.slice(0, 1000 - messages.length));
+    }
+
+    return messages;
+  }
+</script>
+</body>
+</html>
+
